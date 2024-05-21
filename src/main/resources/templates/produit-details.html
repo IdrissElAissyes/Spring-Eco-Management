@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+        xmlns:th="http://www.thymeleaf.org"
+
+        layout:decorate="template" lang="en"  data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none"  >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="Dreamstechnologies - Bootstrap Admin Template">
+    <title>Employees - HRMS admin template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/plugins/fontawesome/css/all.min.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/line-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/material.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/select2.min.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap-datetimepicker.min.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=NDEr5OXWYDjtU4o5F3ZV3BHNX704hC2c7n8DpiP-oxXWP2CaQFSr-c98yyBdJjaFaNMrHXmV1IIVJYde9wC3-ApoyRYnT-wS6nGCsF5IMP89e2zs0Ioq7xLRMheDprr7"
+            charset="UTF-8"></script>
+</head>
+<script type="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></script>
+<body>
+<div layout:fragment="content">
+    <div class="page-wrapper">
+
+        <div class="content container-fluid pb-0">
+
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="page-title" >Details </h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="admin-dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Details produit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card tab-box">
+                <div class="row user-tabs">
+                    <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
+                        <ul class="nav nav-tabs nav-tabs-bottom">
+                            <li class="nav-item"><a href="profile.html#emp_assets" class="nav-link ">Produit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assign-head">
+                <div class="assign-content">
+                    <a class="avatarP" href="profiless.html">
+                    <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image">
+                    </a>
+                    <h6 th:text="${produit.name}" >Dell Keyboard</h6>
+                </div>
+                <div class="assign-content"  >
+                    <a href="#" class="btn btn-assign" data-bs-toggle="modal" data-bs-target="#raise-issue"><i class="fas fa-hand-paper"></i> Description  </a>
+                </div>
+            </div>
+            <div class="card asset-box">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <h5> Info :</h5>
+                            <div class="asset-info">
+                                <div class="asset-info-det">
+
+                                    <ul>
+                                        <li>Type <span th:text="${produit.category.name}">Keybaord</span></li>
+                                        <li> Description  <span th:text="${produit.description}">3647952145678</span></li>
+                                        <li>Serial Number <span>3647952145678</span></li>
+                                        <li>Quantities <span th:text="${productQuantitiesByCategory.get(produit.category.name)}"></span></li>
+                                        <li>Price <span th:text="${produit.price}">Dell</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="assets-image">
+                                <h5> </h5>
+                                <ul>
+                                    <li >
+                                        <ul>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="asset-history">
+                                <h5>Plus Images</h5>
+                                <ul>
+                                    <li>
+                                        <div class="aset-img">
+                                            <li th:each="image : ${listimage}">
+                                                <a class="avatarP" href="profiless.html">
+                                                    <img th:src="'data:image/jpeg;base64,' + ${image.imageData}">
+                                                </a>
+                                            </li>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+
+
+
+        <div id="profile_info" class="modal custom-modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Profile Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="profile-img-wrap edit-img">
+                                        <img class="inline-block" src="assets/img/profiles/avatar-02.jpg" alt="User Image">
+                                        <div class="fileupload btn">
+                                            <span class="btn-text">edit</span>
+                                            <input class="upload" type="file">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-block mb-3">
+                                                <label class="col-form-label">First Name</label>
+                                                <input type="text" class="form-control" value="John">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-block mb-3">
+                                                <label class="col-form-label">Last Name</label>
+                                                <input type="text" class="form-control" value="Doe">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-block mb-3">
+                                                <label class="col-form-label">Birth Date</label>
+                                                <div class="cal-icon">
+                                                    <input class="form-control datetimepicker" type="text" value="05/06/1985">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-block mb-3">
+                                                <label class="col-form-label">Gender</label>
+                                                <select class="select form-control">
+                                                    <option value="male selected">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Address</label>
+                                        <input type="text" class="form-control" value="4487 Snowbird Lane">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">State</label>
+                                        <input type="text" class="form-control" value="New York">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Country</label>
+                                        <input type="text" class="form-control" value="United States">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Pin Code</label>
+                                        <input type="text" class="form-control" value="10523">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Phone Number</label>
+                                        <input type="text" class="form-control" value="631-889-3206">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Department <span class="text-danger">*</span></label>
+                                        <select class="select">
+                                            <option>Select Department</option>
+                                            <option>Web Development</option>
+                                            <option>IT Management</option>
+                                            <option>Marketing</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Designation <span class="text-danger">*</span></label>
+                                        <select class="select">
+                                            <option>Select Designation</option>
+                                            <option>Web Designer</option>
+                                            <option>Web Developer</option>
+                                            <option>Android Developer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label">Reports To <span class="text-danger">*</span></label>
+                                        <select class="select">
+                                            <option>-</option>
+                                            <option>Wilmer Deluna</option>
+                                            <option>Lesley Grauer</option>
+                                            <option>Jeffery Lalor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-section">
+                                <button class="btn btn-primary submit-btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="raise-issue" class="modal custom-modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> Modifier Description</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/updateProducts/{id}(id=${produit.id})}" method="post" >
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-block mb-3">
+                                        <label class="col-form-label" >Description</label>
+                                        <textarea rows="4" class="form-control" name="description" th:value="${produit.description}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-section mt-0">
+                                <button class="btn btn-primary submit-btn w-100">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

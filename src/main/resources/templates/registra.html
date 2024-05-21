@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Bootstrap Dual Design Registration Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <style type="text/css">
+    .register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+} </style>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+            else $('head > link').filter(':first').replaceWith(defaultCSS); 
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height()); 
+          window.parent.postMessage( iframe_height, '/');
+        });
+    </script>
+</head>
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                        <p>You are 30 seconds away from earning your own money!</p>
+                        <input type="submit" name="" value="Login"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Apply as a Employee</h3>
+                                <form th:action="@{/registration1}" method="post"  enctype="multipart/form-data">
+                                <div class="row register-form">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input  name="firstname"  class="form-control" type="text" placeholder="prenom" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="lastname"  placeholder="nom" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="password" type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="DateCreation" type="date" minlength="10" maxlength="10"  class="form-control" placeholder="Your Phone *" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input name="cartNational" type="text" class="form-control" placeholder="Carte National *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="adresse" type="text" class="form-control" placeholder="Adresse *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="tel" type="text" class="form-control" placeholder="numéro de téléphone *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="telfix" type="text" class="form-control" placeholder="numéro de téléphone fixe *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="file" name="file" id="customFile" for="customFile">
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+
+                                </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Apply as a Hirer</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>	<script type="text/javascript">
+	</script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="../assets/css/style_registration.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+---- Include the above in your HEAD tag --------
+
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                        <p>You are 30 seconds away from earning your own money!</p>
+                        <input type="submit" name="" value="Login"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Apply as a Employee</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Apply as a Hirer</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </body>
+
+</html>  -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="#{label.form.title}"></title>
+<link href="css1/bootstrap.min1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style_registration.css">
+<link rel="stylesheet" href="font/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<link href="css1/plugins/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="img1/law-favicon.svg">
+	<style type="text/css">
+    	@import url('https://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+    	*{
+    		font-family: 'Droid Arabic Kufi';
+    	}
+    </style>
+<style>
+.password-verdict{
+color:#000;
+}
+</style>
+<script src="js1/jquery-3.1.1.min.js"></script>
+<script src="js1/popper.min.js"></script>
+<script src="js1/bootstrap1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script th:src="@{/resources/pwstrength.js}"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+<title th:text="#{label.form.title}">form</title>
+</head>
+<body class="rtls">
+    <div class="wrapper" id="wrapper" style="background-image: url('img/logo-background.jpg');">
+        <div class="inner" id="ibox-content">
+         <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+          </div>
+        <a  th:href="@{/index}"><img src="img1/justice-blue.png" width="200" alt="Menu principal"  class="logo" style="display: block;margin: 0 auto;padding-top: 20px;" /></a>
+            <br/><br/>
+            <form action="/" method="POST" enctype="utf8" >
+             <h3 th:text="#{label.form.title}">form</h3>
+                <div class="form-group" >
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.firstName}">first</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="" />
+                    <span id="firstNameError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div> 
+                 <div class="form-wrapper">
+							<label th:text="#{label.user.lastName}">last</label>
+                           <input class="form-control" id="lastName" name="lastName" value="" />
+                            <span id="lastNameError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+						</div>  
+                </div>
+             <div class="form-wrapper">
+                    <label  th:text="#{label.user.phone}">last</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" value="" />
+                    <span id="telError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                   <span id="telValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                  </div>  
+                  <div class="form-group" >
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.email}">email</label>
+                    <input  class="form-control" id="email" name="email" value="" />                  
+                    <span id="emailError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                    <span id="emailValid" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div> 
+                  <div class="form-wrapper">
+							<label  th:text="#{label.user.confirmemail}">email</label>
+                    <input type="email" class="form-control" name="email" value="" required="required"/>                  
+                    <span id="emailError" class="alert alert-danger" style="display:none"></span>
+						</div> 
+                </div>   
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.password}">password</label>
+                    <input id="password" class="form-control" name="password" value="" type="password" />
+                    <span id="passwordError" class="form-wrapper-InputWrapper_explain" style="display:none"></span>
+                 </div>  
+                <div class="form-wrapper">
+                    <label  th:text="#{label.user.confirmPass}">confirm</label>
+                    <input id="matchPassword" class="form-control" name="matchingPassword" value="" type="password" />
+                    <span id="globalError" class="form-wrapper-InputWrapper_explain " style="display:none"></span>
+                    <span id="matchPasswordError" class="form-wrapper-InputWrapper_explain " style="display:none"></span>
+                 </div> 
+                <div class="checkbox">
+                    <label >
+                    <input type="checkbox" th:name="#{label.user.2fa}" value="true"/> <span th:text="#{label.user.2fa}"></span>
+                    <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button id= "idsubmit" type="submit" class="btn btn-primary" th:text="#{label.form.submit}">submit</button>
+            </form>
+             <a class="button1 btn btn-primary" th:href="@{/login}" th:text="#{label.form.loginLink}">login</a>
+            <div class="signup-image">
+                        <figure><img src="img/logo-site.svg" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div> 
+        </div>
+         
+    </div>
+
+<script th:inline="javascript">
+var serverContext = [[@{/}]];
+
+$(document).ready(function () {
+	$('form').submit(function(event) {
+		register(event);
+	});
+	
+	$(":password").keyup(function(){
+		if($("#password").val() != $("#matchPassword").val()){
+	        $("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
+	    }else{
+	    	$("#globalError").html("").hide();
+	    }
+	});
+	
+	$("#firstName")
+    .mouseup(function() {
+    	$("#firstNameError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#firstNameError").html("").hide();
+        	
+    });
+	$("#lastName")
+    .mouseup(function() {
+    	$("#lastNameError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#lastNameError").html("").hide();
+        	
+    });
+	$("#tel")
+    .mouseup(function() {
+    	$("#telError").html("").hide(); 
+    	("#telValid").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#telError").html("").hide();
+        	("#telValid").html("").hide(); 
+        	
+    });
+	$("#email")
+    .mouseup(function() {
+    	$("#emailError").html("").hide(); 
+    	$("#emailValid").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#emailError").html("").hide();
+        	$("#emailValid").html("").hide();  	
+    });
+	$("#password")
+    .mouseup(function() {
+    	$("#passwordError").html("").hide(); 
+      })
+    .mousedown(function() {
+        	$("#passwordError").html("").hide();
+        	
+    });
+
+       /*  $('#idsubmit').on('click', function(){
+        $('#wrapper').children('.inner').toggleClass('sk-loading'); 
+        	// $(this).loadButton('on');
+        }); */
+
+   
+	
+	options = {
+		    common: {minChar:8},
+		    ui: {
+		    	showVerdictsInsideProgressBar:true,
+		    	showErrors:true,
+		    	errorMessages:{
+		    		  wordLength: /*[[#{error.wordLength}]]*/,
+		    		  wordNotEmail: /*[[#{error.wordNotEmail}]]*/,
+		    		  wordSequences: /*[[#{error.wordSequences}]]*/,
+		    		  wordLowercase: /*[[#{error.wordLowercase}]]*/,
+		    		  wordUppercase: /*[[#{error.wordUppercase}]]*/,
+		    	          wordOneNumber: /*[[#{error.wordOneNumber}]]*/,
+		    		  wordOneSpecialChar: /*[[#{error.wordOneSpecialChar}]]*/
+		    		}
+		    	}
+		};
+	 $('#password').pwstrength(options);
+});
+
+function register(event){
+	event.preventDefault();
+    $(".alert").html("").hide();
+    $(".error-list").html("");
+    if($("#password").val() != $("#matchPassword").val()){
+    	$("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
+    	return;
+    }
+    if($("#firstName").val() == ""){
+    	$("#firstNameError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    if($("#lastName").val() == ""){
+    	$("#lastNameError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    if($("#tel").val() == ""){
+    	$("#telError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    else{
+    	if(!phonenumber($("#tel").val())){
+    		$("#telValid").show().html(/*[[#{ValidTel.user.tel}]]*/);
+        	return;
+    	}
+    }
+    if($("#email").val() == ""){
+    	$("#emailError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    else{
+    	if(!validateEmail($("#email").val())){
+    		$("#emailValid").show().html(/*[[#{ValidEmail.user.email}]]*/);
+        	return;
+    	}
+    	
+    }
+    if($("#password").val() == ""){
+    	$("#passwordError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+    if($("#matchPassword").val() == ""){
+    	$("#matchPasswordError").show().html(/*[[#{champs.user}]]*/);
+    	return;
+    }
+   
+    $('#wrapper').children('.inner').toggleClass('sk-loading');
+    //champs.user:Champ requis  Ce champs est requis
+    var formData= $('form').serialize();
+    $.post(serverContext + "user/registration",formData ,function(data){
+        if(data.message == "success"){ 
+            window.location.href = serverContext + "successRegister.html";
+        }
+        
+    })
+    .fail(function(data) {
+    	$('#wrapper').children('.inner').toggleClass('sk-loading');
+        if(data.responseJSON.error.indexOf("MailError") > -1)
+        {
+            window.location.href = serverContext + "emailError.html";
+        }
+        else if(data.responseJSON.error == "UserAlreadyExist"){
+            $("#emailError").show().html(data.responseJSON.message);
+        }
+        else if(data.responseJSON.error.indexOf("InternalError") > -1){
+            window.location.href = serverContext + "login?message=" + data.responseJSON.message;
+        }
+        else{
+        	var errors = $.parseJSON(data.responseJSON.message);
+            $.each( errors, function( index,item ){
+            	if (item.field){
+            		$("#"+item.field+"Error").show().append(item.defaultMessage+"<br/>");
+            	}
+            	else {
+            		$("#globalError").show().append(item.defaultMessage+"<br/>");
+            	}
+               
+            });
+        }
+    });
+    function validateEmail(email) 
+    {
+      var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
+      return re.test(email);
+    }
+    
+    function phonenumber(inputtxt)
+    {
+      var phoneno = /^\d{10}$/;
+      return phoneno.test(inputtxt);
+     /*  if(inputtxt.value.match(phoneno))
+      {
+          return true;
+      }
+      else
+      {
+         return false;
+      } */
+      }
+
+}
+$(function(){
+
+    $('#toggleSpinners').on('click', function(){
+
+        $('#ibox2').children('.ibox-content').toggleClass('sk-loading');
+
+    })
+
+})
+
+</script>
+</body>
+
+</html> -->

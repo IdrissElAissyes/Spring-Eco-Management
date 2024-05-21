@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="Dreamstechnologies - Bootstrap Admin Template">
+    <title>Login - HRMS admin template</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/material.css">
+
+    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Kt-rk9Y0p0HFHTnk5kJPaZVATy50IUtrO9p0I_0ppKRT_xemnhQ8IT_zvDimuiepBDYO-tBmJaQPRNPY-D0SpNAvRMUNITX5UNejmh5fnvhFxp9KyBUX-GfV6zf8atip"
+        charset="UTF-8"></script>
+    <script th:inline="javascript">
+        function validate() {
+            if (document.f.username.value == "" && document.f.password.value == "") {
+                alert(/*[[#{message.username} + #{message.password}]]*/);
+                document.f.username.focus();
+                return false;
+            }
+            if (document.f.username.value == "") {
+                alert(/*[[#{message.username}]]*/);
+                document.f.username.focus();
+                return false;
+            }
+            if (document.f.password.value == "") {
+                alert(/*[[#{message.password}]]*/);
+                document.f.password.focus();
+                return false;
+            }
+        }
+
+    </script>
+</head>
+
+<body class="account-page">
+
+    <div class="main-wrapper">
+        <div class="account-content">
+            <a href="job-list.html" class="btn btn-primary apply-btn">Apply Job</a>
+            <div class="container">
+
+                <div class="account-logo">
+                    <a href="admin-dashboard.html"><img src="assets/img/logo2.png" alt="Dreamguy's Technologies"></a>
+                </div>
+
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <h3 class="account-title">Login</h3>
+<!--                        <div th:if="${param.success}">-->
+<!--                            You successfully registered. Please use your credentials to log in.-->
+<!--                        </div>-->
+<!--                        <div th:if="${param.error}">-->
+<!--                            Login or password incorrect.-->
+<!--                        </div>-->
+
+<!--                        <div th:if="${param.logout}">-->
+<!--                            You've been logged out.-->
+<!--                        </div>-->
+                        <p class="account-subtitle">Access to our dashboard</p>
+
+                        <form th:action="@{/login}" method="post" onsubmit="return validate();" >
+                            <div class="input-block mb-4">
+                                <label class="col-form-label">Email Address</label>
+                                <input name="username" class="form-control" type="text" >
+                            </div>
+                            <div class="input-block mb-4">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <label class="col-form-label">Password</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="text-muted" href="forgot-password.html">
+Forgot password?
+</a>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+                                    <input name="password"  class="form-control" type="password" id="password">
+                                    <span class="fa-solid fa-eye-slash" id="toggle-password"></span>
+                                </div>
+                            </div>
+                            <div class="input-block mb-4 text-center">
+                                <button class="btn btn-primary account-btn"   value="Log in" type="submit">Login</button>
+                            </div>
+                            <div class="account-footer">
+                                <p>Don't have an account yet? <a href="registration1">Sing up</a></p>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/jquery-3.7.1.min.js" type="31ce79c3a77aa9d2fbf7da5e-text/javascript"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js" type="31ce79c3a77aa9d2fbf7da5e-text/javascript"></script>
+
+    <script src="assets/js/app.js" type="31ce79c3a77aa9d2fbf7da5e-text/javascript"></script>
+    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="31ce79c3a77aa9d2fbf7da5e-|49" defer></script>
+</body>
+
+</html>
