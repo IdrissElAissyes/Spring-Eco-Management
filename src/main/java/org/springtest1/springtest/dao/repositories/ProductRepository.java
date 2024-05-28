@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springtest1.springtest.dao.entities.Category;
 import org.springtest1.springtest.dao.entities.Product;
+import org.springtest1.springtest.dao.entities.UserModel;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ List<Object[]> countProductsByCategory();
     @Modifying
     @Query("DELETE FROM Product p WHERE p.category.id = :categoryId")
     void deleteByCategoryId(@Param("categoryId") Long categoryId);
+    List<Product> findByUser(UserModel user);
     List<Product> findByPrice(Integer pr);
     //    List<Product> findByfirstNameContaining(String mt);
 }

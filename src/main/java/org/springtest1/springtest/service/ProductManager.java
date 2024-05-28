@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.springtest1.springtest.dao.entities.Category;
 import org.springtest1.springtest.dao.entities.Product;
+import org.springtest1.springtest.dao.entities.UserModel;
 
 import java.util.List;
 
@@ -23,8 +24,8 @@ public void updateProduct(Long productId, String name, String designation, Integ
     public List<Product> getAllProducts();
     public Product getProductById(Long productId);
     public List<Product> searchProduits(String keyword);
-    public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additionalImages, String name, String description, Integer price, Category category);
-
+    public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additionalImages, String name, String description, Integer price, Category category, UserModel user);
+    public List<Product> getProductsByUser(UserModel user);
     void updateProduct1(Long productId,String description);
 //   void  saveProductToDB(MultipartFile file, String name, String description, Integer price, Category category);
       //void  saveProductToDB(MultipartFile file, String name, String description, Integer price);

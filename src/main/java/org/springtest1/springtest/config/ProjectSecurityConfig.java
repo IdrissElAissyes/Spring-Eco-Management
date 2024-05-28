@@ -28,9 +28,9 @@ public class ProjectSecurityConfig implements WebMvcConfigurer {
 
         http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/all-products","/profiless","/category","/AdminProfile","/profile","/customer","/employees_","/produit_details").authenticated()
+                        .requestMatchers("/all-products","/profiless","/product_details","/category","/AdminProfile","/profile","/customer","/employees_","/produit_details").authenticated()
                         .requestMatchers("/deleteProduct","/updateProducts/*","/registration","/admin-dashboard","/addCategory","/AddUser","/","/listProduit","/ajouterproduit","/updateUser/*","/ajouterproduits","/deleteProducts/*","/deleteUser/*","/deleteProduct/*","/deleteCategory/*","/static.cdn-cgi.scripts.7d0fa10a.cloudflare-static/**","/ajouterproduit","/deleteProduct/*","/updateProduct/*","/addProduct","/login",
-                                "/assets/**","/js/**","/src/**" ,"/dom/**","/util/**","/src/**" ,"/node_modules/**","/scss/**","/wp-content/**"
+                                "/assets/**","/assets2/**","/js2/**","/js/**","/src/**","/src2/**","/dom/**","/util/**","/src/**" ,"/node_modules/**","/scss/**","/wp-content/**"
                                 ,"/wp-includes/**","/resources/**","/webjars/**",
                                 "/email_templates/**",
                                 "/resources/**",
@@ -46,12 +46,13 @@ public class ProjectSecurityConfig implements WebMvcConfigurer {
                                 "/vendor/**",
                                 "/img1/**",
                                 "/font-awesome/**",
-                                "/scss/**",
+                                "/scss/**","/scss2/**",
                                 "/js1/**",
                                 "/skins/**",
                                 "/assets/**",
                                 "/cdn-cgi/**",
                                 "/node_modules/**",
+                                "/node_modules2/**",
                                 "/wp-conten/**",
                                 "/wp-includes/**"
                                 ,"/registration1"

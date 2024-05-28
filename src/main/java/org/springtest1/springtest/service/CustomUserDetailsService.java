@@ -23,16 +23,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found with email: " + email);
         }
-        SessionData session =  user.getSession();
-        if (session == null) {
-            throw new UsernameNotFoundException("No session data associated with the user: " + email);
-        }
-
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .roles(user.getRole().name())
-
                 .build();
     }
 }

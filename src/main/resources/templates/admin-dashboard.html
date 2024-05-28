@@ -44,7 +44,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title" >Bonjour Admin!</h3>
+                        <h3 class="page-title" >WELCOME</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ul>
@@ -59,7 +59,7 @@
                             <span class="dash-widget-icon"><i class="fa-solid fa-cubes"></i></span>
                             <div class="dash-widget-info">
                                 <h3 th:text="${totalProductCount}"></h3>
-                                <span>Produit</span>
+                                <span>Product</span>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                    <div class="card dash-widget">
+                    <div class="card dash-widget" sec:authorize="hasRole('ADMIN')">
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="fa-solid fa-user"></i></span>
                             <div class="dash-widget-info">
@@ -188,126 +188,126 @@
 
 
             <div class="row">
-                <div class="col-md-6 d-flex">
-                    <div class="card card-table flex-fill">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0">Invoices</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-nowrap custom-table mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th>Invoice ID</th>
-                                        <th>Client</th>
-                                        <th>Due Date</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0001</a></td>
-                                        <td>
-                                            <h2><a href="#">Global Technologies</a></h2>
-                                        </td>
-                                        <td>11 Mar 2019</td>
-                                        <td>$380</td>
-                                        <td>
-                                            <span class="badge bg-inverse-warning">Partially Paid</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0002</a></td>
-                                        <td>
-                                            <h2><a href="#">Delta Infotech</a></h2>
-                                        </td>
-                                        <td>8 Feb 2019</td>
-                                        <td>$500</td>
-                                        <td>
-                                            <span class="badge bg-inverse-success">Paid</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0003</a></td>
-                                        <td>
-                                            <h2><a href="#">Cream Inc</a></h2>
-                                        </td>
-                                        <td>23 Jan 2019</td>
-                                        <td>$60</td>
-                                        <td>
-                                            <span class="badge bg-inverse-danger">Unpaid</span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="invoices.html">View all invoices</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex">
-                    <div class="card card-table flex-fill">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0">Payments</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table custom-table table-nowrap mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th>Invoice ID</th>
-                                        <th>Client</th>
-                                        <th>Payment Type</th>
-                                        <th>Paid Date</th>
-                                        <th>Paid Amount</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0001</a></td>
-                                        <td>
-                                            <h2><a href="#">Global Technologies</a></h2>
-                                        </td>
-                                        <td>Paypal</td>
-                                        <td>11 Mar 2019</td>
-                                        <td>$380</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0002</a></td>
-                                        <td>
-                                            <h2><a href="#">Delta Infotech</a></h2>
-                                        </td>
-                                        <td>Paypal</td>
-                                        <td>8 Feb 2019</td>
-                                        <td>$500</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="invoice-view.html">#INV-0003</a></td>
-                                        <td>
-                                            <h2><a href="#">Cream Inc</a></h2>
-                                        </td>
-                                        <td>Paypal</td>
-                                        <td>23 Jan 2019</td>
-                                        <td>$60</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="payments.html">View all payments</a>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="col-md-6 d-flex">-->
+<!--                    <div class="card card-table flex-fill">-->
+<!--                        <div class="card-header">-->
+<!--                            <h3 class="card-title mb-0">Invoices</h3>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table table-nowrap custom-table mb-0">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>Invoice ID</th>-->
+<!--                                        <th>Client</th>-->
+<!--                                        <th>Due Date</th>-->
+<!--                                        <th>Total</th>-->
+<!--                                        <th>Status</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0001</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Global Technologies</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>11 Mar 2019</td>-->
+<!--                                        <td>$380</td>-->
+<!--                                        <td>-->
+<!--                                            <span class="badge bg-inverse-warning">Partially Paid</span>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0002</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Delta Infotech</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>8 Feb 2019</td>-->
+<!--                                        <td>$500</td>-->
+<!--                                        <td>-->
+<!--                                            <span class="badge bg-inverse-success">Paid</span>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0003</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Cream Inc</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>23 Jan 2019</td>-->
+<!--                                        <td>$60</td>-->
+<!--                                        <td>-->
+<!--                                            <span class="badge bg-inverse-danger">Unpaid</span>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-footer">-->
+<!--                            <a href="invoices.html">View all invoices</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6 d-flex">-->
+<!--                    <div class="card card-table flex-fill">-->
+<!--                        <div class="card-header">-->
+<!--                            <h3 class="card-title mb-0">Payments</h3>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table custom-table table-nowrap mb-0">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>Invoice ID</th>-->
+<!--                                        <th>Client</th>-->
+<!--                                        <th>Payment Type</th>-->
+<!--                                        <th>Paid Date</th>-->
+<!--                                        <th>Paid Amount</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0001</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Global Technologies</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>Paypal</td>-->
+<!--                                        <td>11 Mar 2019</td>-->
+<!--                                        <td>$380</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0002</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Delta Infotech</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>Paypal</td>-->
+<!--                                        <td>8 Feb 2019</td>-->
+<!--                                        <td>$500</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><a href="invoice-view.html">#INV-0003</a></td>-->
+<!--                                        <td>-->
+<!--                                            <h2><a href="#">Cream Inc</a></h2>-->
+<!--                                        </td>-->
+<!--                                        <td>Paypal</td>-->
+<!--                                        <td>23 Jan 2019</td>-->
+<!--                                        <td>$60</td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-footer">-->
+<!--                            <a href="payments.html">View all payments</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
             <div class="row">
-                <div class="col-md-6 d-flex">
+                <div class="col-md-6 d-flex" sec:authorize="hasRole('ADMIN')">
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h3 class="card-title mb-0">Employees</h3>
+                            <h3 class="card-title mb-0">USERS</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -316,8 +316,8 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Status</th>
-                                        <th class="text-end">Action</th>
+                                        <th>Role</th>
+
                                     </tr >
                                     </thead>
                                     <tbody>
@@ -325,20 +325,66 @@
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a href="#" class="avatar"><img th:src="'data:image/jpeg;base64,' + ${user.imguser}" alt="User Image"></a>
-                                                <a href="#">Barry Cuda <span>CEO</span></a>
+                                                <a href="#"  th:text="${user.firstname} + *{user.lastname}">Barry Cuda <span>CEO</span></a>
                                             </h2>
                                         </td>
                                         <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" th:text="${user.username}" data-cfemail="97f5f6e5e5eef4e2f3f6d7f2eff6fae7fbf2b9f4f8fa" >[email&#160;protected]</a></td>
                                         <td>
                                             <div class="dropdown action-label">
+                                                <!-- Affichage du rôle de l'utilisateur -->
                                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa-regular fa-circle-dot text-success"></i> Active
+                                                    <i class="fa-regular fa-circle-dot text-success"></i>
+                                                    <span th:text="${user.role}"></span> <!-- Affichage du rôle de l'utilisateur -->
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-success"></i> Active</a>
                                                     <a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-danger"></i> Inactive</a>
                                                 </div>
                                             </div>
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="employees_">View all clients</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="card card-table flex-fill">
+                        <div class="card-header">
+                            <h3 class="card-title mb-0">Product</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table custom-table mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Product Name </th>
+                                        <th>Price</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="produit:${products}">
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a th:href="@{product_details(produit=${produit.id})}" class="avatar"> <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image"></a>
+                                                <a th:href="@{product_details(produit=${produit.id})}" th:text="${produit.name}">Richard Miles <span>Web Developer</span></a>
+                                            </h2>
+                                            <small class="block text-ellipsis">
+                                                <span th:text="${productQuantitiesByCategory.get(produit.category.name)}">1</span>
+                                                <span class="text-muted"  th:text="${produit.category.name}">open tasks, </span>
+
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <h2><a  th:text="${produit.price}"> </a></h2>
+
                                         </td>
                                         <td class="text-end">
                                             <div class="dropdown dropdown-action">
@@ -356,38 +402,41 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="clients.html">View all clients</a>
+                            <a href="/all-products">View all projects</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 d-flex">
+                <div class="col-md-6 d-flex" sec:authorize="hasRole('ADMIN')">
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h3 class="card-title mb-0">Recent Projects</h3>
+                            <h3 class="card-title mb-0">All Product</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table custom-table mb-0">
                                     <thead>
                                     <tr>
-                                        <th>Project Name </th>
-                                        <th>Progress</th>
+                                        <th>Product Name </th>
+                                        <th>Price</th>
                                         <th class="text-end">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr th:each="produit:${listProduits}">
                                         <td>
-                                            <h2><a href="project-view.html">Office Management</a></h2>
+                                            <h2 class="table-avatar">
+                                                <a th:href="@{product_details(produit=${produit.id})}" class="avatar"> <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image"></a>
+                                                <a th:href="@{product_details(produit=${produit.id})}" th:text="${produit.name}">Richard Miles <span>Web Developer</span></a>
+                                            </h2>
                                             <small class="block text-ellipsis">
-                                                <span>1</span> <span class="text-muted">open tasks, </span>
-                                                <span>9</span> <span class="text-muted">tasks completed</span>
+                                                <span th:text="${productQuantitiesByCategory.get(produit.category.name)}">1</span>
+                                                <span class="text-muted"  th:text="${produit.category.name}">open tasks, </span>
+
                                             </small>
                                         </td>
                                         <td>
-                                            <div class="progress progress-xs progress-striped">
-                                                <div class="progress-bar w-65" role="progressbar" data-bs-toggle="tooltip" title="65%"></div>
-                                            </div>
+                                            <h2><a  th:text="${produit.price}"> </a></h2>
+
                                         </td>
                                         <td class="text-end">
                                             <div class="dropdown dropdown-action">
@@ -399,104 +448,13 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <h2><a href="project-view.html">Project Management</a></h2>
-                                            <small class="block text-ellipsis">
-                                                <span>2</span> <span class="text-muted">open tasks, </span>
-                                                <span>5</span> <span class="text-muted">tasks completed</span>
-                                            </small>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped">
-                                                <div class="progress-bar w-15" role="progressbar" data-bs-toggle="tooltip" title="15%"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2><a href="project-view.html">Video Calling App</a></h2>
-                                            <small class="block text-ellipsis">
-                                                <span>3</span> <span class="text-muted">open tasks, </span>
-                                                <span>3</span> <span class="text-muted">tasks completed</span>
-                                            </small>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped">
-                                                <div class="progress-bar w-50" role="progressbar" data-bs-toggle="tooltip" title="50%"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2><a href="project-view.html">Hospital Administration</a></h2>
-                                            <small class="block text-ellipsis">
-                                                <span>12</span> <span class="text-muted">open tasks, </span>
-                                                <span>4</span> <span class="text-muted">tasks completed</span>
-                                            </small>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped">
-                                                <div class="progress-bar w-88" role="progressbar" data-bs-toggle="tooltip" title="88%"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2><a href="project-view.html">Digital Marketplace</a></h2>
-                                            <small class="block text-ellipsis">
-                                                <span>7</span> <span class="text-muted">open tasks, </span>
-                                                <span>14</span> <span class="text-muted">tasks completed</span>
-                                            </small>
-                                        </td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped">
-                                                <div class="progress-bar w-100" role="progressbar" data-bs-toggle="tooltip" title="100%"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0)"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="projects.html">View all projects</a>
+                            <a href="/all-products">View all projects</a>
                         </div>
                     </div>
                 </div>

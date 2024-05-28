@@ -58,7 +58,7 @@
                                 <div class="profile-view">
                                     <div class="profile-img-wrap">
                                         <div class="profile-img">
-                                            <a href="#"><img src="assets/img/profiles/avatar-02.jpg" alt="User Image"></a>
+                                            <a href="#"><img th:src="'data:image/jpeg;base64,' + ${user.imguser}" alt="User Image"></a>
                                         </div>
                                     </div>
                                     <div class="profile-basic">
@@ -107,16 +107,16 @@
                     <div class="row user-tabs">
                         <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
                             <ul class="nav nav-tabs nav-tabs-bottom">
-<!--                                <li class="nav-item"><a href="#emp_profile" data-bs-toggle="tab" class="nav-link ">Profile</a></li>-->
+                                <li class="nav-item"><a href="#emp_profile" data-bs-toggle="tab" class="nav-link " sec:authorize="hasRole('ADMIN')">All Product</a></li>
 <!--                                <li class="nav-item"><a href="#emp_projects" data-bs-toggle="tab" class="nav-link  ">Projects</a></li>-->
                                 <!--                                <li class="nav-item"><a href="#bank_statutory" data-bs-toggle="tab" class="nav-link">Bank & Statutory <small class="text-danger">(Admin Only)</small></a></li>-->
-                                <li class="nav-item"><a href="#emp_assets" data-bs-toggle="tab" class="nav-link " >Produits</a></li>
+                                <li class="nav-item"><a href="#emp_assets" data-bs-toggle="tab" class="nav-link " >Product</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="tab-content">
-                    <div class="tab-pane fade" id="emp_assets">
+                    <div class="tab-pane fade" id="emp_profile">
                         <div class="table-responsive table-newdatatable">
                             <table class="table table-new custom-table mb-0 datatable">
                                 <thead>
@@ -151,7 +151,53 @@
                                     </td>
                                     <td>
                                         <div class="table-actions d-flex">
-                                            <a class="delete-table me-2" th:href="@{produit_details(produit=${produit.id})}" >
+                                            <a class="delete-table me-2" th:href="@{product_details(produit=${produit.id})}" >
+                                                <img src="assets/img/icons/eye.svg" alt="Eye Icon">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="emp_assets">
+                        <div class="table-responsive table-newdatatable">
+                            <table class="table table-new custom-table mb-0 datatable">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Stock quantite</th>
+                                    <th>Price</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="produit:${products}" >
+                                <tr >
+                                    <td>1</td>
+                                    <td>
+                                        <a href="assets-details.html" class="table-imgname">
+                                            <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image">
+                                            <span th:text="${produit.name}">Laptop</span>
+                                        </a>
+                                    </td>
+                                    <td th:text="${produit.category.name}">AST - 001</td>
+                                    <td th:text="${productQuantitiesByCategory.get(produit.category.name)}">22 Nov, 2022 10:32AM</td>
+                                    <td th:text="${produit.price}" class="table-namesplit">
+                                        <a href="javascript:void(0);" class="table-profileimage">
+                                            <img src="assets/img/profiles/avatar-02.jpg" class="me-2" alt="User Image">
+                                        </a>
+                                        <a href="javascript:void(0);" class="table-name">
+                                            <span>John Paul Raj</span>
+                                            <p><span class="__cf_email__" data-cfemail="23494c4b4d63475146424e44565a505746404b0d404c4e">[email&#160;protected]</span></p>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="table-actions d-flex">
+                                            <a class="delete-table me-2" th:href="@{product_details(produit=${produit.id})}" >
                                                 <img src="assets/img/icons/eye.svg" alt="Eye Icon">
                                             </a>
                                         </div>

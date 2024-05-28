@@ -33,11 +33,12 @@ public class UserModel {
     @Lob
     @Column(columnDefinition="MEDIUMBLOB")
     private String imguser;
-    // Relation OneToOne avec SessionData
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private SessionData session;
-    private boolean enabled;
+    private boolean isActive;
     private String secret;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Product> products;
 
 }
+

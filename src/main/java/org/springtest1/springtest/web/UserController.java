@@ -4,22 +4,24 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springtest1.springtest.dao.entities.Category;
-import org.springtest1.springtest.dao.entities.Product;
-import org.springtest1.springtest.dao.entities.SessionData;
-import org.springtest1.springtest.dao.entities.UserModel;
+import org.springtest1.springtest.dao.entities.*;
 import org.springtest1.springtest.dao.repositories.CategoryRepository;
 import org.springtest1.springtest.dao.repositories.SessionDataRepository;
 import org.springtest1.springtest.dao.repositories.UserRepository;
 import org.springtest1.springtest.service.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.*;
 @Controller
@@ -63,6 +65,7 @@ public class UserController {
 //        return "registration_page";
 //    }
     @GetMapping("/registration1")
+
     public String getRegistrationPage(Model model,HttpSession session) {
         UserModel user=new UserModel();
         model.addAttribute("user",user);
@@ -123,6 +126,7 @@ public class UserController {
 //
 //    return "redirect:/login";
 //}
+private final PasswordEncoder passwordEncoder;
 @PostMapping("/registration1")
 public String registerUser(@RequestParam("file") MultipartFile file,
                            @RequestParam("username") String username,
@@ -134,9 +138,40 @@ public String registerUser(@RequestParam("file") MultipartFile file,
                            @RequestParam("cartNational") String cartNational,
                            @RequestParam("adresse") String adresse,
                            @RequestParam("telfix") String telfix,
-                           HttpSession session) {
+                           HttpServletRequest request
+                           ) {
 
-    userService.register(file, firstname, lastname, username, password, tel, telfix, date, cartNational, adresse,session);
+    userService.register(file, firstname, lastname, username, password, tel, telfix, date, cartNational, adresse);
+    // Invalidate the current session (if exists)
+//    HttpSession session = request.getSession(false);
+//    if (session != null) {
+//        session.invalidate();
+//    }
+//
+//    // Create a new session for the new user
+//    HttpSession newSession = request.getSession(true);
+//    UserModel user = new UserModel();
+//    String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//    if (fileName.contains("..")) {
+//        System.out.println("not a valid file");
+//    }
+//    try {
+//        user.setImguser(Base64.getEncoder().encodeToString(file.getBytes()));
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+//    user.setFirstname(firstname);
+//    user.setLastname(lastname);
+//    user.setUsername(username);
+//    user.setTel(tel);
+//    user.setTelfixe(telfix);
+//    user.setDateCreation(date);
+//    user.setCarteNational(cartNational);
+//    user.setAdresse(adresse);
+//    user.setRole(role);
+//    user.setPassword(passwordEncoder.encode(password));
+    // Set user information in the session
+//    newSession.setAttribute("user1", user);
     return "redirect:/login";
 }
 
@@ -166,8 +201,8 @@ public String registerUser(@RequestParam("file") MultipartFile file,
             if (category != null) {
                 products = productManager.getProductsByCategory(category);
             } else {
-                // Handle category not found
-                products = new ArrayList<>(); // Empty list
+
+                products = new ArrayList<>();
             }
         } else {
             products = productManager.getAllProducts();
@@ -242,28 +277,32 @@ public String registerUser(@RequestParam("file") MultipartFile file,
     @GetMapping("/employees_")
     public  ModelAndView getAllUser(Model model,HttpServletRequest request,
                                     @RequestParam(name = "searchEm", defaultValue = "") String keyword1,
-                                    @RequestParam(name = "searchId", defaultValue = "") String md) {
-        List<UserModel> userModels1=new ArrayList<>();
-        if (!keyword1.isEmpty()) {
-            userModels1 = userManager.searchEmplyee(keyword1);
-        } else if (!md.isEmpty()) {
-            UserModel user = userManager.findById(md);
-            userModels1 = Collections.singletonList(user);
-        } else {
-            userModels1 = userManager.getAllUsers();
-        }
-
-
-
-        model.addAttribute("listUser", userModels1);
-//        model.addAttribute("listUser1", userModels1);
-
+                                    @RequestParam(name = "searchId", defaultValue = "") String md, @AuthenticationPrincipal UserDetails userDetails) throws Exception {
         ModelAndView ret = new ModelAndView();
-            HttpSession session = request.getSession();
-            UserModel user = (UserModel) session.getAttribute("user1");
+
+
+        if (userDetails != null) {
+
+            UserModel user = userService.findUserByUsername(userDetails.getUsername());
             if (user != null) {
                 ret.addObject("user", user);
-            }
+
+
+                List<UserModel> userModels1 = new ArrayList<>();
+                if (!keyword1.isEmpty()) {
+                    userModels1 = userManager.searchEmplyee(keyword1);
+                } else if (!md.isEmpty()) {
+                    UserModel user1 = userManager.findById(md);
+                    userModels1 = Collections.singletonList(user1);
+                } else {
+                    userModels1 = userManager.getAllUsers();
+                }
+
+
+                model.addAttribute("listUser", userModels1);
+
+            }}
+
         ret.setViewName("employees");
             return ret;
     }
@@ -290,33 +329,29 @@ public String registerUser(@RequestParam("file") MultipartFile file,
                                @RequestParam("cartNational") String cartN,
                                @RequestParam("adresse") String adresse,
                                @RequestParam("telfix") String telfix,
-                          HttpSession session
+                                  HttpServletRequest session
+                            ) {
+                       userService.register(file, firstname, lastname, username, pwd, tel, telfix, date, cartN, adresse);
 
-     ) {
-
-        userService.register(file, firstname, lastname, username, pwd, tel, telfix, date, cartN, adresse,session);
-
-        return "redirect:/employees_";
+            return "redirect:/employees_";
     }
 
     @PostMapping("/updateUser/{id}")
-    public String updateProduct(
-                                @PathVariable("username1") String username,
-                                @PathVariable("DateCreation1") Date date,
-                                @PathVariable("password1") String pwd,
-                                @PathVariable("firstname1") String firstname,
-                                @PathVariable("lastname1") String lastname,
-                                @PathVariable("tel1") String tel,
-                                @PathVariable("cartNational1") String cartN,
-                                @PathVariable("adresse1") String adresse,
-                                @PathVariable("telfix1") String telfix
-                               ) {
-
-
-        userService.updateUsers( firstname, lastname, username, pwd, tel, telfix, date, cartN, adresse);
-
-
-
+    public String updateUser(@PathVariable("id") Long id,
+            @RequestParam("firstname") String firstname,
+            @RequestParam("lastname") String lastname,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestParam("dateCreation") Date dateCreation,
+            @RequestParam("carteNational") String carteNational,
+            @RequestParam("adresse") String adresse,
+            @RequestParam("tel") String tel,
+            @RequestParam("telfixe") String telfixe,
+            @RequestParam("role") UserRole role
+    ) {
+        userService.updateUsers(id,firstname, lastname, username, password, tel, telfixe, dateCreation, carteNational, adresse, role);
         return "redirect:/employees_";
     }
-    }
+
+
+}

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springtest1.springtest.dao.entities.Category;
 import org.springtest1.springtest.dao.entities.Product;
 import org.springtest1.springtest.dao.entities.ProductImage;
+import org.springtest1.springtest.dao.entities.UserModel;
 import org.springtest1.springtest.dao.repositories.ProductRepository;
 
 import java.io.IOException;
@@ -87,8 +88,64 @@ public void updateProduct(Long productId, String name, String designation, Integ
     }
 }
 
+//@Override
+//public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additionalImages, String name, String description, Integer price, Category category) {
+//    Product product = new Product();
+//
+//    // Traitement de la principale image du produit
+//    String mainImageFileName = StringUtils.cleanPath(mainImage.getOriginalFilename());
+//    if (mainImageFileName.contains("..")) {
+//        System.out.println("Not a valid file");
+//    }
+//    try {
+//        product.setImgP(Base64.getEncoder().encodeToString(mainImage.getBytes()));
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+//
+//    // Traitement des images supplémentaires
+//    List<ProductImage> productImages = new ArrayList<>();
+//    for (MultipartFile additionalImage : additionalImages) {
+//        String additionalImageFileName = StringUtils.cleanPath(additionalImage.getOriginalFilename());
+//        if (additionalImageFileName.contains("..")) {
+//            System.out.println("Not a valid file");
+//        }
+//        try {
+//            ProductImage image = new ProductImage();
+//            image.setImageData(Base64.getEncoder().encodeToString(additionalImage.getBytes()));
+//            image.setProduct(product); // Assurez-vous d'associer l'image au produit
+//            productImages.add(image);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    product.setDescription(description);
+//    product.setName(name);
+//    product.setPrice(price);
+//    product.setCategory(category);
+//    product.setImages(productImages); // Associez les images supplémentaires au produit
+//
+//    productRepository.save(product);
+//}
+//
+//
+//
+//    public List<ProductImage> getProductImages(Long productId) {
+//        Optional<Product> p = productRepository.findById(productId);
+//        if (p.isPresent()) {
+//            Product product = p.get();
+//            return product.getImages();
+//        }
+//        throw new RuntimeException("Product not found with id: " + productId);
+//    }
 @Override
-public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additionalImages, String name, String description, Integer price, Category category) {
+public List<Product> getProductsByUser(UserModel user) {
+    // Implémentez la logique pour récupérer les produits associés à un utilisateur spécifique
+    return productRepository.findByUser(user);
+}
+    @Override
+public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additionalImages, String name, String description, Integer price, Category category, UserModel user) {
     Product product = new Product();
 
     // Traitement de la principale image du produit
@@ -101,6 +158,7 @@ public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additio
     } catch (IOException e) {
         e.printStackTrace();
     }
+
 
     // Traitement des images supplémentaires
     List<ProductImage> productImages = new ArrayList<>();
@@ -123,21 +181,11 @@ public void saveProductToDB(MultipartFile mainImage, List<MultipartFile> additio
     product.setName(name);
     product.setPrice(price);
     product.setCategory(category);
+    product.setUser(user); // Associez le produit à l'utilisateur
     product.setImages(productImages); // Associez les images supplémentaires au produit
 
     productRepository.save(product);
 }
-
-
-
-    public List<ProductImage> getProductImages(Long productId) {
-        Optional<Product> p = productRepository.findById(productId);
-        if (p.isPresent()) {
-            Product product = p.get();
-            return product.getImages();
-        }
-        throw new RuntimeException("Product not found with id: " + productId);
-    }
 
 
     @Override

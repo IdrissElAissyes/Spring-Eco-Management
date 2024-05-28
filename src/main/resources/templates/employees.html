@@ -104,13 +104,13 @@
                                 <a href="profileAdmin.html" class="avatar"> <img th:src="'data:image/jpeg;base64,' + ${user.imguser}" alt="User Image"></a>
                             </div>
                             <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" sec:authorize="hasRole('USER')"><i class="material-icons">more_vert</i></a>
+                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" sec:authorize="hasRole('ADMIN')"><i class="material-icons">more_vert</i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal"  th:attr="data-bs-target='#edit_employee_' + ${user.id}"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal"  th:attr="data-bs-target='#delete_employee_' + ${user.id}"></i> Delete</a>
                                 </div>
                             </div>
-                            <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profileAdmin.html" th:text="${user.firstname} + *{user.lastname}">John Doe</a></h4>
+                            <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a th:href="@{profileAdmin(user=${user.id})}"  th:text="${user.firstname} + *{user.lastname}">John Doe</a></h4>
                             <div class="small text-muted" th:text="${user.carteNational}">Web Designer</div>
                         </div>
                         <div class="modal custom-modal fade" th:id="'delete_employee_' + ${user.id}" role="dialog">
@@ -118,7 +118,7 @@
                                 <div class="modal-content">
                                     <div class="modal-body">
                                         <div class="form-header">
-                                            <h3>Delete Employee</h3>
+                                            <h3>Suprimmer employe</h3>
                                             <p>Are you sure want to delete?</p>
                                         </div>
                                         <div class="modal-btn delete-action">
@@ -149,66 +149,68 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"  type="text">Prenom :<span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text"  id="" th:value="${user.firstname}">
+                                                        <label class="col-form-label" for="firstname">Prenom :<span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="firstname" name="firstname" th:value="${user.firstname}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label" type="text"   >Nom :</label>
-                                                        <input class="form-control" type="text"  id="lastname1" th:value="${user.lastname}">
+                                                        <label class="col-form-label" for="lastname">Nom :</label>
+                                                        <input class="form-control" type="text" id="lastname" name="lastname" th:value="${user.lastname}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   >Email : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text"  id="username1" th:value="${user.username}">
+                                                        <label class="col-form-label" for="username">Email : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="username" name="username" th:value="${user.username}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   >Mote de passe : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="password"  id="password1" th:value="${user.password}">
+                                                        <label class="col-form-label" for="password">Mot de passe : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="password" id="password" name="password" th:value="${user.password}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   >Carte National : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text"  id="cartNational1" th:value="${user.carteNational}">
+                                                        <label class="col-form-label" for="carteNational">Carte National : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="carteNational" name="carteNational" th:value="${user.carteNational}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   > Adresse : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text"  id="adresse1" th:value="${user.adresse}">
+                                                        <label class="col-form-label" for="adresse">Adresse : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="adresse" name="adresse" th:value="${user.adresse}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   > numéro de téléphone : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text"  id="tel1" th:value="${user.tel}">
+                                                        <label class="col-form-label" for="tel">Numéro de téléphone : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="tel" name="tel" th:value="${user.tel}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   > numéro de téléphone fixe: <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text" id="telfix1" th:value="${user.telfixe}">
+                                                        <label class="col-form-label" for="telfixe">Numéro de téléphone fixe: <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" id="telfixe" name="telfixe" th:value="${user.telfixe}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="input-block mb-3">
-                                                        <label class="col-form-label"   >Date Creation : <span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="date"  id="DateCreation1" th:value="${user.dateCreation}">
+                                                        <label class="col-form-label" for="dateCreation">Date Creation : <span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="date" id="dateCreation" name="dateCreation" th:value="${user.dateCreation}">
                                                     </div>
                                                 </div>
 <!--                                                <div class="col-sm-6">-->
 <!--                                                    <div class="input-block mb-3">-->
-<!--                                                        <label class="col-form-label">Image <span class="text-danger">*</span></label>-->
-<!--                                                        <input class="form-control" type="file"  id="file1" th:value="${user.imguser}">-->
+<!--                                                        <label class="col-form-label" for="role">Role:</label>-->
+<!--                                                        <select name="role" id="role" class="form-control">-->
+<!--                                                            <option value="USER" th:selected="${user.role == 'USER'}">User</option>-->
+<!--                                                            <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">Admin</option>-->
+<!--                                                        </select>-->
 <!--                                                    </div>-->
 <!--                                                </div>-->
                                             </div>
-
                                             <div class="submit-section">
                                                 <button class="btn btn-primary submit-btn">Submit</button>
                                             </div>
@@ -296,336 +298,344 @@
                                             <input class="form-control" type="file" name="file" id="customFile" for="customFile">
                                         </div>
                                     </div>
+<!--                                    <div class="col-sm-6">-->
+<!--                                        <div class="input-block mb-3">-->
+<!--                                          <select id="role" name="role" class="form-control">-->
+<!--                                        <option value="USER">User</option>-->
+<!--                                        <option value="ADMIN">Admin</option>-->
+<!--                                         </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
-                                <div class="table-responsive m-t-15">
-                                    <table class="table table-striped custom-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Module Permission</th>
-                                                <th class="text-center">Read</th>
-                                                <th class="text-center">Write</th>
-                                                <th class="text-center">Create</th>
-                                                <th class="text-center">Delete</th>
-                                                <th class="text-center">Import</th>
-                                                <th class="text-center">Export</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Holidays</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Leaves</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Clients</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Projects</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tasks</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Chats</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Assets</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Timing Sheets</td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" checked>
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                                <td class="text-center">
-                                                    <label class="custom_check">
-<input type="checkbox" name="rememberme" class="rememberme">
-<span class="checkmark"></span>
-</label>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+<!--                                <div class="table-responsive m-t-15">-->
+<!--                                    <table class="table table-striped custom-table">-->
+<!--                                        <thead>-->
+<!--                                            <tr>-->
+<!--                                                <th>Module Permission</th>-->
+<!--                                                <th class="text-center">Read</th>-->
+<!--                                                <th class="text-center">Write</th>-->
+<!--                                                <th class="text-center">Create</th>-->
+<!--                                                <th class="text-center">Delete</th>-->
+<!--                                                <th class="text-center">Import</th>-->
+<!--                                                <th class="text-center">Export</th>-->
+<!--                                            </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                            <tr>-->
+<!--                                                <td>Holidays</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Leaves</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Clients</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Projects</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Tasks</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Chats</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Assets</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td>Timing Sheets</td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" checked>-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <label class="custom_check">-->
+<!--<input type="checkbox" name="rememberme" class="rememberme">-->
+<!--<span class="checkmark"></span>-->
+<!--</label>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Submit</button>
                                 </div>

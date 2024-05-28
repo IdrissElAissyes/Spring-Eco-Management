@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -41,14 +42,14 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Produits</h3>
+                            <h3 class="page-title">Products</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="admin-dashboard.html">Admin</a></li>
-                                <li class="breadcrumb-item active">produits</li>
+                                <li class="breadcrumb-item active">Product</li>
                             </ul>
                         </div>
                         <div class="col-auto float-end ms-auto"      >
-                            <a href="#"  class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_leave"><i class="fa-solid fa-plus" ></i> Ajouter Produit </a>
+                            <a href="#"  class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_leave"><i class="fa-solid fa-plus" ></i> Add Product </a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
                                             th:value="${category.id}"
                                             th:text="${category.name}"></option>
                                 </select>
-                                <label class="focus-label">Type Produit</label>
+                                <label class="focus-label">Type Product</label>
                             </div>
                         </div>
 
@@ -136,7 +137,7 @@
                             <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                 <tr>
-                                    <th>Produit</th>
+                                    <th>Product</th>
                                     <th>Category</th>
 
                                     <th>Stock quantite</th>
@@ -146,11 +147,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="produit:${listProduits}" >
+                                <tr th:each="produit:${products}" >
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a th:href="@{produit_details(produit=${produit.id})}" class="avatar"> <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image"></a>
-                                            <a th:href="@{produit_details(produit=${produit.id})}" th:text="${produit.name}">Richard Miles <span>Web Developer</span></a>
+                                            <a th:href="@{product_details(produit=${produit.id})}" class="avatar"> <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image"></a>
+                                            <a th:href="@{product_details(produit=${produit.id})}" th:text="${produit.name}">Richard Miles <span>Web Developer</span></a>
                                         </h2>
                                     </td>
                                     <td th:text="${produit.category.name}">Casual</td>

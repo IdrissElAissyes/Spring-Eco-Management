@@ -114,12 +114,12 @@
                     </form>-->
 
 
-                <div class="row staff-grid-row" >
-                    <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3"  th:each="produit:${listProduits}">
+                <div class="row staff-grid-row">
+                    <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3"  th:each="produit:${products}">
                         <div class="profile-widget">
                             <div class="profile-img">
 
-                                <a class="avatar" th:href="@{produit_details(produit=${produit.id})}">
+                                <a class="avatar" th:href="@{product_details(produit=${produit.id})}">
                                     <img th:src="'data:image/jpeg;base64,' + ${produit.imgP}" alt="Product Image">
                                 </a>
                             </div> <!--th:src="*{'data:imgP/jpeg;base64,'+{produit.imgP}}"-->
